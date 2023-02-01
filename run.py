@@ -35,17 +35,15 @@ class MyClient(discord.Client):
 
         if message.channel.id != logs_channel:
             private_bot = self.get_channel(logs_channel)
-            await private_bot.send('deleted by ' + str(message.author))
-            await private_bot.send(message.content)
-            await private_bot.send('-----------')
+            embed = Embed(title=f'deleted by {message.author} in #{message.channel.name}', description=message.content)
+            await private_bot.send(embed=embed)
 
     async def on_message_edit(self, before, after):
-        if before.channel.id != logs_channel:
+        if after.channel.id != logs_channel:
             private_bot = self.get_channel(logs_channel)
-            await private_bot.send('edited by ' + str(before.author))
-            await private_bot.send('old message:')
-            await private_bot.send(before.content)
-            await private_bot.send('-----------')
+            url = f'https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id}'
+            embed = Embed(title=f'edited by {after.author} in #{after.channel.name}', description=before.content, url=url)
+            await private_bot.send(embed=embed)
 
     async def on_message(self, message):
     
