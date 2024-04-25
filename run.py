@@ -50,11 +50,6 @@ class MyClient(discord.Client):
         if("muted" in [y.name.lower() for y in message.author.roles]):
             return
 
-        if (message.author.id == "367469002374774786"):  # imax id
-            await react_headpat(self, message)
-        if (message.author.id == '384304778173480960'): # karen id
-            await react_ayaya(self, message)
-
         content = message.content
 
         powerful = ("mooderator" in [y.name.lower() for y in message.author.roles]
@@ -182,18 +177,12 @@ class MyClient(discord.Client):
                     await react_tmw(self, message)
                 if 'osity' in content.lower():
                     await react_geniosity(self, message)
-                if 'juicy' in content.lower():
-                    await react_juicy(self, message)
                 if 'wtmoo' in content.lower():
                     await react_wtmoo(self, message)
                 if 'orz' in content.lower():
                     await react_orz(self, message)
-                if 'egg' in content.lower():
-                    await react_egg(self, message)
                 if 'blobpat' in content.lower():
                     await react_headpat(self, message)
-                if 'eggmel' in content.lower() or 'eygmel' in content.lower() or 'sarren' in content.lower() or 'aermel' in content.lower() or 'starren' in content.lower() or 'kagebashy15' in content.lower() or 'eygirlwhoisunderage' in content.lower():
-                    await react_ship(self, message)
             except:
                 pass
 
