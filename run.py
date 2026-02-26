@@ -39,7 +39,7 @@ class MyClient(discord.Client):
             await private_bot.send(embed=embed)
 
     async def on_message_edit(self, before, after):
-        if after.channel.id != logs_channel:
+        if after.channel.id != logs_channel and not after.author.bot:
             private_bot = self.get_channel(logs_channel)
             url = f'https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id}'
             embed = Embed(title=f'edited by {after.author} in #{after.channel.name}', description=before.content, url=url)
