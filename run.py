@@ -26,7 +26,7 @@ class MyClient(discord.Client):
         await updatePOTD()
         print("Finished setting up POTD Leaderboard...")
         await self.change_presence(activity=discord.Game(name="Tmw orz", url="https://codeforces.com/profile/tmwilliamlin168", type=0),
-                                   status=Status.online, afk=False)
+                                   status=Status.online)
 
     async def on_message_delete(self, message):
     
@@ -241,14 +241,8 @@ async def updatePOTD():
                 pass
         rateLimitCounter.sleep(1) # rate-limiting
 
-async def updater(client):
-    await client.wait_until_ready();
-    while True:
-        await asyncio.sleep(1)
-        await updateMutes(client)
 
-intents = discord.Intents(guilds=True, members=True, messages=True, reactions=True)
+intents = discord.Intents.all()
 client = MyClient(intents=intents)
-client.loop.create_task(updater(client))
 client.run(token)
 
