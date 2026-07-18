@@ -30,11 +30,12 @@ def make_star(message):
         else:
             embed = Embed(title =  message.content, description = "[Jump to message](" + message.jump_url + ")", color = 0xffac33)
 
+        author_name = message.author.global_name
         avatar = message.author.display_avatar
         if avatar is None:
-            embed.set_author(name = str(message.author))
+            embed.set_author(name = author_name)
         else:
-            embed.set_author(name = str(message.author), icon_url = str(avatar))
+            embed.set_author(name = author_name, icon_url = str(avatar))
 
         if message.attachments:
             file = message.attachments[0]
@@ -51,11 +52,12 @@ def make_geniosity(message):
         else:
             embed = Embed(title =  message.content, description = "[Jump to message](" + message.jump_url + ")", color = 0x2ecc71)
 
+        author_name = message.author.global_name
         avatar = message.author.display_avatar
         if avatar is None:
-            embed.set_author(name = str(message.author))
+            embed.set_author(name = author_name)
         else:
-            embed.set_author(name = str(message.author), icon_url = str(avatar))
+            embed.set_author(name = author_name, icon_url = str(avatar))
 
         if message.attachments:
             file = message.attachments[0]
